@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Make Asynchronous Requests</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="masthead">
+        <h1>CURRENT UPDATES</h1>
+        <h2>what are you interested in today?</h2>
+
+        <div class="site-container">
+            <form id="search-form" action="#">
+                <label for="search-keyword" class="visuallyhidden">What are you interested in today?</label>
+                <input id="search-keyword" type="text" name="search-keyword" placeholder="e.g Sports, Health, Music, News... Anything!!" required>
+                <input id="submit-btn" type="submit" value="GO!">
+            </form>
+        </div>
+    </header>
+
+    <div class="site-container">
+        <div id="response-container"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
