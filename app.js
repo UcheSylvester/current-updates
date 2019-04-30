@@ -35,7 +35,7 @@
                     <a href=${article.url} title="click to read more" target="_blank"><img src='${article.urlToImage}' alt='${searchedForText}'></a>
                     <figcaption>${article.title}</figcaption>
                 </figure>
-                <li>`) +'<ul>'
+                <li>`).join('') +'<ul>'
 
             } else {
                 htmlContent = `<div class="error-no-image">OOPS!! NO Contents Available...</div>`
