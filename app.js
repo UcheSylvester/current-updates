@@ -4,6 +4,7 @@
 
     const form = document.querySelector('#search-form');
     const searchField = document.querySelector('#search-keyword');
+    const dateContainer = document.querySelector('#date-container')
     let searchedForText;
     const responseContainer = document.querySelector('#response-container');
 
@@ -12,7 +13,6 @@
         // console.log('submiting...');
         searchedForText = searchField.value;
         const fullDate = new Date();
-        console.log(fullDate)
         const year = new Date().getFullYear();
         const month = new Date().getMonth() + 1;
         const day = new Date().getDate()
@@ -34,6 +34,9 @@
         newsRequest.send()
         
         function addContent() {
+            dateContainer.innerHTML = `Today's Date : ${fullDate}`;
+            dateContainer.classList.add('date')
+
             let htmlContent = '';
             const data = JSON.parse(this.responseText);
             const articles = data.articles;
