@@ -9,7 +9,7 @@
 
     form.addEventListener('submit', function(event) {
         event.preventDefault()
-        console.log('submiting...');
+        // console.log('submiting...');
         searchedForText = searchField.value;
 
         /****TODO ****/
@@ -19,7 +19,7 @@
         // send request
 
         const newsRequest = new XMLHttpRequest();
-        const url = `https://newsapi.org/v2/everything?q=${searchedForText}&from=2019-04-30&sortBy=popularity&apiKey=aaea3187f1cb4430976f15adae267d04`;
+        const url = `https://newsapi.org/v2/everything?q=${searchedForText}&from=2019-05-01&apiKey=aaea3187f1cb4430976f15adae267d04`;
         newsRequest.open('GET', url);
         newsRequest.onload = addContent;
         newsRequest.onerror = onError
@@ -31,8 +31,9 @@
             const articles = data.articles;
             console.log(articles)
 
-            if(data && articles && articles.length > 1) {
+            if(data && articles && articles.length >= 1) {
                 htmlContent = '<ul>'+ articles.map(article => `<li>
+                
                 <figure>
                     <a href=${article.url} title="click to read more" target="_blank"><img src='${article.urlToImage}' alt='${searchedForText}'></a>
                     <figcaption>${article.title}</figcaption>
