@@ -33,11 +33,20 @@
 
             if(data && articles && articles.length >= 1) {
                 htmlContent = '<ul>'+ articles.map(article => `<li>
-                
-                <figure>
+                <div class="article">
+                    <h2><a href=${article.url} title="click to read more" target="_blank">${article.title}</a></h2>
+                    <figure>
+                    
+                    <figure>
                     <a href=${article.url} title="click to read more" target="_blank"><img src='${article.urlToImage}' alt='${searchedForText}'></a>
                     <figcaption>${article.title}</figcaption>
-                </figure>
+                    </figure>
+
+                    <p>${article.description}</p>
+                </div>
+
+                
+
                 <li>`).join('') +'<ul>'
 
             } else {

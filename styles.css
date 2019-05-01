@@ -84,7 +84,7 @@ body {
 /*** Image Styline ***/
 figure {
     margin: 0;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
     position: relative;
     text-align: center;
 }
@@ -118,8 +118,9 @@ ul {
     background-size: 1.8em;
     border: solid 1px #dbe2e8;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 0.5em;
+    margin-bottom: 2em;
     padding: 1em 2em 1em 4.8em;
+    text-align: center;
 }
 
 .article:hover {
@@ -127,9 +128,10 @@ ul {
 }
 
 .article h2 {
-    font-size: 18px;
+    font-size: 1.5em;
     font-weight: 600;
-    margin: 0;
+    margin-bottom: 0.5em;
+    text-align: center;
 }
 
 .article h2 a {
