@@ -11,6 +11,14 @@
         event.preventDefault()
         // console.log('submiting...');
         searchedForText = searchField.value;
+        const fullDate = new Date();
+        console.log(fullDate)
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth() + 1;
+        const day = new Date().getDate()
+        // console.log(year, month, day)
+
+        const date = `${year}-${month}-${day}`;
 
         /****TODO ****/
         // create an XMLHttpRequest Object
@@ -19,7 +27,7 @@
         // send request
 
         const newsRequest = new XMLHttpRequest();
-        const url = `https://newsapi.org/v2/everything?q=${searchedForText}&from=2019-05-01&apiKey=aaea3187f1cb4430976f15adae267d04`;
+        const url = `https://newsapi.org/v2/everything?q=${searchedForText}&from=${date}&apiKey=aaea3187f1cb4430976f15adae267d04`;
         newsRequest.open('GET', url);
         newsRequest.onload = addContent;
         newsRequest.onerror = onError
