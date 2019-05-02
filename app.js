@@ -70,10 +70,14 @@
                 </div>
                 
                 <li>`).join('') +'<ul>'
+                console.dir(responseContainer)
 
             } else {
-                responseContainer.querySelector('ul').remove();
+                
+                // responseContainer.querySelector('ul').remove();
                 htmlContent = `<div class="error-no-articles">OOPS!! There is no updates on ${searchedForText}</div>`
+                console.dir(responseContainer)
+                
             }
 
             responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
