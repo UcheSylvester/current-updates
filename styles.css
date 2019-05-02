@@ -13,7 +13,7 @@ body {
     font-family: OpenSans, sans-serif;
     margin: 0;
     padding: 0;
-    color: white;
+    /* color: white; */
 }
 
 .site-container {
@@ -189,4 +189,9 @@ ul {
 
 #search-options {
     margin-right: 1em;
+}
+
+#search-options label {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
 }

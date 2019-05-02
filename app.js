@@ -20,21 +20,19 @@
         const day = new Date().getDate()
         const date = `${year}-${month}-${day}`;
 
+        dateContainer.innerHTML = `Today's Date : ${fullDate}`;
+        dateContainer.classList.add('date')
         
         // working on search options
         const searchOptions = document.querySelectorAll('input[type="radio"]');
-        console.log(searchOptions)
 
         let searchType;
 
         searchOptions.forEach(searchOption => {
-            console.log(searchOption)
             if(searchOption.checked == true) {
-                // console.log(searchOption.value)
                 searchType = searchOption.value;
             }
         })
-
 
 
         /****TODO ****/
@@ -42,7 +40,6 @@
         // Open a GET request to the newsapi.org
         // create the onload function
         // send request
-
 
         const newsRequest = new XMLHttpRequest();
         const url = `https://newsapi.org/v2/${searchType}?q=${searchedForText}&from=${date}&apiKey=aaea3187f1cb4430976f15adae267d04`;
@@ -53,9 +50,6 @@
         newsRequest.send()
         
         function addContent() {
-            dateContainer.innerHTML = `Today's Date : ${fullDate}`;
-            dateContainer.classList.add('date')
-
             let htmlContent = '';
             const data = JSON.parse(this.responseText);
             const articles = data.articles;
@@ -78,7 +72,8 @@
                 <li>`).join('') +'<ul>'
 
             } else {
-                htmlContent = `<div class="error-no-image">OOPS!! NO Contents Available...</div>`
+                responseContainer.querySelector('ul').remove();
+                htmlContent = `<div class="error-no-articles">OOPS!! There is no updates on ${searchedForText}</div>`
             }
 
             responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
