@@ -4,21 +4,38 @@
 
     const form = document.querySelector('#search-form');
     const searchField = document.querySelector('#search-keyword');
-    const dateContainer = document.querySelector('#date-container')
     let searchedForText;
     const responseContainer = document.querySelector('#response-container');
+    const dateContainer = document.querySelector('#date-container')
+
 
     form.addEventListener('submit', function(event) {
         event.preventDefault()
-        // console.log('submiting...');
         searchedForText = searchField.value;
+        
+        // working on date
         const fullDate = new Date();
         const year = new Date().getFullYear();
         const month = new Date().getMonth() + 1;
         const day = new Date().getDate()
-        // console.log(year, month, day)
-
         const date = `${year}-${month}-${day}`;
+
+        
+        // working on search options
+        const searchOptions = document.querySelectorAll('input[type="radio"]');
+        console.log(searchOptions)
+
+        let searchType;
+
+        searchOptions.forEach(searchOption => {
+            console.log(searchOption)
+            if(searchOption.checked == true) {
+                // console.log(searchOption.value)
+                searchType = searchOption.value;
+            }
+        })
+
+
 
         /****TODO ****/
         // create an XMLHttpRequest Object
@@ -26,8 +43,10 @@
         // create the onload function
         // send request
 
+
         const newsRequest = new XMLHttpRequest();
-        const url = `https://newsapi.org/v2/everything?q=${searchedForText}&from=${date}&apiKey=aaea3187f1cb4430976f15adae267d04`;
+        const url = `https://newsapi.org/v2/${searchType}?q=${searchedForText}&from=${date}&apiKey=aaea3187f1cb4430976f15adae267d04`;
+        console.log(url)
         newsRequest.open('GET', url);
         newsRequest.onload = addContent;
         newsRequest.onerror = onError
@@ -42,7 +61,7 @@
             const articles = data.articles;
             console.log(articles)
 
-            if(data && articles && articles.length >= 1) {
+            if(data && articles && articles.length > 1) {
                 htmlContent = '<ul>'+ articles.map(article => `<li>
                 <div class="article">
                     <h2><a href=${article.url} title="click to read more" target="_blank">${article.title}</a></h2>
@@ -55,9 +74,7 @@
 
                     <p>${article.description}</p>
                 </div>
-
                 
-
                 <li>`).join('') +'<ul>'
 
             } else {

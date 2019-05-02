@@ -18,14 +18,17 @@
                 <input id="search-keyword" type="search" name="search-keyword" autofocus required placeholder="e.g Sports, Health, Music, News... Anything!!" required>
                 
                 <!-- Options for types of updates -->
-                <div>
-                    <input name="headline" id="top-headline" type="radio">
-                    <label for="top-headline">top-headline</label>
+                <div id="search-options">
+                    <div>
+                        <input required type="radio" name="headline" id="top-headlines" value="top-headlines">
+                        <label for="top-headline">top-headline</label>
+                    </div>
+                    <div>
+                        <input required type="radio" name="headline" id="everything" value="everything">
+                        <label for="everything">everything</label>
+                    </div>
                 </div>
-                <div>
-                    <input type="radio" name="headline" id="everything">
-                    <label for="everything">everything</label>
-                </div>
+
                 <input id="submit-btn" type="submit" value="GO!">
 
             </form>
