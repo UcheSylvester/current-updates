@@ -10,8 +10,12 @@
 
 
     form.addEventListener('submit', function(event) {
+        
         event.preventDefault()
         searchedForText = searchField.value;
+
+        let searchType;
+        let htmlContent = '';
         
         // working on date
         const fullDate = new Date();
@@ -23,11 +27,8 @@
         dateContainer.innerHTML = `Today's Date : ${fullDate}`;
         dateContainer.classList.add('date')
         
-        // working on search options
+        // making sure the checked radio buttons is the selected search option
         const searchOptions = document.querySelectorAll('input[type="radio"]');
-
-        let searchType;
-
         searchOptions.forEach(searchOption => {
             if(searchOption.checked == true) {
                 searchType = searchOption.value;
@@ -48,43 +49,62 @@
         newsRequest.onload = addContent;
         newsRequest.onerror = onError
         newsRequest.send()
-        
+
+
         function addContent() {
-            let htmlContent = '';
             const data = JSON.parse(this.responseText);
             const articles = data.articles;
             console.log(articles)
 
-            if(data && articles && articles.length > 1) {
-                htmlContent = '<ul>'+ articles.map(article => `<li>
-                <div class="article">
-                    <h2><a href=${article.url} title="click to read more" target="_blank">${article.title}</a></h2>
-                    <figure>
-                    
-                    <figure>
-                    <a href=${article.url} title="click to read more" target="_blank"><img src='${article.urlToImage}' alt='${searchedForText}'></a>
-                    <figcaption>${article.title}</figcaption>
-                    </figure>
-
-                    <p>${article.description}</p>
-                </div>
-                
-                <li>`).join('') +'<ul>'
+            if(data && articles && articles.length >= 1) {
+                // Checking for initial search results and removing/replacing them with new search results
+                if(responseContainer.hasChildNodes()) {
+                    responseContainer.firstElementChild.remove();
+                    displayResult(articles);
+                } else {
+                    displayResult(articles)
+                }
                 console.dir(responseContainer)
 
             } else {
+                // checking for initial search results and removing/replacing them with "no content message"
+                if(!responseContainer.hasChildNodes()) {
+                htmlContent = `<div class="error-no-image">OOPS!! There is no updates on ${searchedForText}</div>`
+
+                } else {
+                    responseContainer.firstElementChild.remove();
+                    htmlContent = `<div class="error-no-articles">OOPS!! There is no updates on ${searchedForText}</div>`
+                }
+       
+        }
+
+        
+        function displayResult(articles) {
+            
+            htmlContent = '<ul>'+ articles.map(article => `<li>
+            <div class="article">
+                <h2><a href=${article.url} title="click to read more" target="_blank">${article.title}</a></h2>
+                <figure>
                 
-                // responseContainer.querySelector('ul').remove();
-                htmlContent = `<div class="error-no-articles">OOPS!! There is no updates on ${searchedForText}</div>`
-                console.dir(responseContainer)
-                
-            }
+                <figure>
+                <a href=${article.url} title="click to read more" target="_blank"><img src='${article.urlToImage}' alt='${searchedForText}'></a>
+                <figcaption>${article.title}</figcaption>
+                </figure>
+
+                <p>${article.description}</p>
+            </div>
+            
+            <li>`).join('') +'<ul>'
+        }
+
 
             responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
 
         }
 
         function onError() {
+            console.log(this)
+
             console.log('oppsss')
         }
 
