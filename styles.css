@@ -206,3 +206,20 @@ ul {
     color: white;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* WORKING ON ACCESSIBILITY!! */
+
+*:focus {
+    outline: 0;
+    box-shadow: 0 0 20px #02b3e4;
+    border-color: #02b3e4
+}
+
+[type='submit']:focus {
+    font-weight: bolder;
+    font-size: 0.9em;
+}
+
+button:focus {
+    font-weight: bold;
+}
