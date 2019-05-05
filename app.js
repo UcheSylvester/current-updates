@@ -169,10 +169,28 @@
             const articles = data.articles;
 
             if(articles && articles.length >= 1) {
+                if(!responseContainer.hasChildNodes()) {
+                    displayContent(articles)
+                } else {
+                    responseContainer.firstElementChild.remove();
+                    displayContent(articles)
+                }
+                // displayContent(articles)
+            } else {
+                if(!responseContainer.hasChildNodes()){
+                    htmlContent = `<div class="error-no-articles article">OOPS!! There is no updates on ${searchedForText}</div>`;
+                } else {
+                    responseContainer.firstElementChild.remove();
+                htmlContent = `<div class="error-no-articles article">OOPS!! There is no updates on ${searchedForText}</div>`;
+                }
+            }
+
+            function displayContent(articles) {
+                console.log(articles)
                 htmlContent = '<ul>' + articles.map(article => 
                     `<li>
                         <div class="article">
-                            <h2>><a href="${article.url}" title="click to read more!">${article.title}</a></h2>
+                            <h2><a href="${article.url}" title="click to read more!">${article.title}</a></h2>
                             <figure>
                                 <img src="${article.urlToImage}" alt="${searchedForText}">
                                 <figcaption>${article.description}</figcaption>
@@ -181,13 +199,25 @@
                         </div>
                     </li>`
                 ).join('') + '</ul>'
-            } else {
-                htmlContent = `<div class="error-no-articles">OOPS!! There is no updates on ${searchedForText}</div>`;
             }
+            console.dir(responseContainer)
 
             responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
 
-        } 
+        }
+
+
+        /*** HANDLING ERRORS ***/
+        function requestError(e) {
+            const errorMessage = `<p class="article">Oh... no! <em>"${e.message}"</em> error occurred on updates request for <em>"${searchedForText}"</em>. Please try again!`
+
+            if(!responseContainer.hasChildNodes()) {
+                responseContainer.insertAdjacentHTML('afterbegin', errorMessage)
+            } else {
+                responseContainer.firstElementChild.remove();
+            responseContainer.insertAdjacentHTML('afterbegin', errorMessage)
+            }
+        }
 
 
 
