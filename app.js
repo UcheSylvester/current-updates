@@ -54,7 +54,7 @@
         function addContent() {
             const data = JSON.parse(this.responseText);
             const articles = data.articles;
-            console.log(articles)
+            // console.log(articles)
 
             if(data && articles && articles.length >= 1) {
                 // Checking for initial search results and removing/replacing them with new search results
