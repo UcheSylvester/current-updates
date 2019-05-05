@@ -67,12 +67,12 @@
                 htmlContent = '<ul>' + articles.map(article => 
                     `<li>
                         <div class="article">
-                            <h2><a href="${article.url}" title="click to read more!">${article.title}</a></h2>
+                            <h2><a href="${article.url}" target="_blank">${article.title}</a></h2>
                             <figure>
                                 <img src="${article.urlToImage}" alt="${searchedForText}">
                                 <figcaption>${article.description}</figcaption>
                             </figure>
-                            <p>${article.content}</p>
+                            <a href="${article.url}" target="_blank" title="click to read more!"><p>${article.content}</p></a>
                         </div>
                     </li>`
                 ).join('') + '</ul>'
