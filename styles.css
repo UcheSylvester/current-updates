@@ -13,6 +13,7 @@ body {
     font-family: OpenSans, sans-serif;
     margin: 0;
     padding: 0;
+    /* background-color: grey; */
     /* color: white; */
 }
 
@@ -78,13 +79,16 @@ body {
 
 /*** Response Container ***/
 #response-container {
+    display: grid;
+    width: 80%;
+    margin: 0 auto;
     margin-top: 2em;
 }
 
 /*** Image Styline ***/
 figure {
     margin: 0;
-    /* margin-bottom: 2em; */
+    margin-bottom: 2em;
     position: relative;
     text-align: center;
 }
@@ -109,20 +113,27 @@ figcaption {
 ul {
     list-style: none;
     padding: 0;
+    /* width: 50% */
 }
 
 .article {
-    /* background: url('../images/icon-article.png'), #ffffff; */
-    /* background-position: 1.5em 1.2em; */
-    /* background-repeat: no-repeat; */
-    /* background-size: 1.8em; */
     border: solid 1px #dbe2e8;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 2em;
-    /* padding: 1em 2em 1em 4.8em; */
     padding: 1.5em 3em;
     text-align: center;
 }
+
+
+/* .article {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: auto;
+    text-align: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 1.5em 3em;
+    
+} */
 
 .article:hover {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
@@ -155,7 +166,9 @@ ul {
 }
 
 .date {
-    text-align: right;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
     font-size: 1.2em;
     margin-top: 2.4em;
     color: #02b3e4;
@@ -209,6 +222,8 @@ ul {
 
 #search-options label {
     color: white;
+    font-size: 1.5em;
+    font-weight: normal;
     font-family: 'Courier New', Courier, monospace;
 }
 
