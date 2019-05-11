@@ -245,7 +245,9 @@ button:focus {
 }
 
 .back-to-top {
-    transition: all 0.5s;
+    background-color: rgb(255, 255, 255);
+    border-style: none;
+    transition: all 2s;
     font-size: 40px;
     width: 50px;
     height: 50px;
@@ -260,7 +262,9 @@ button:focus {
     font-size: 50px;
     bottom: 50px;
     color: #092229;
+}
 
-
+.hide {
+    display: none;
 }
 
