@@ -4,7 +4,8 @@
     const searchField = document.querySelector('#search-keyword');
     let searchedForText, searchType;
     const responseContainer = document.querySelector('#response-container');
-    const dateContainer = document.querySelector('#date-container')
+    const dateContainer = document.querySelector('#date-container');
+    const backToTop = document.querySelector('.back-to-top');
 
 
     form.addEventListener('submit', function(event) {
@@ -98,6 +99,23 @@
         }
         
     })
+
+    window.addEventListener('scroll', () => (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) ? backToTop.classList.remove('hide') : backToTop.classList.add('hide'))
+
+    /*** BREAK DOWN OF THE ABOVE IN NORMAL FUNCTION */
+    // window.addEventListener('scroll', scrollFunction);
+
+    // function scrollFunction(e) {
+    //     // console.log(e)
+    //     (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) ? backToTop.classList.remove('hide') : backToTop.classList.add('hide');        
+    // }
+    
+    backToTop.addEventListener('click', toTop);
+
+    function toTop(e) {
+        document.body.scrollTop = 0; // for safari
+        document.documentElement.scrollTop = 0; // for other browsers
+    }
 
 })()
 

@@ -243,3 +243,28 @@ ul {
 button:focus {
     font-weight: bold;
 }
+
+.back-to-top {
+    background-color: rgb(255, 255, 255);
+    border-style: none;
+    transition: all 2s;
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #4b4f52
+}
+
+.back-to-top:hover {
+    transition: all 0.5s;
+    font-size: 50px;
+    bottom: 50px;
+    color: #092229;
+}
+
+.hide {
+    display: none;
+}
+
