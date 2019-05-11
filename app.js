@@ -2,10 +2,10 @@
 
     const form = document.querySelector('#search-form');
     const searchField = document.querySelector('#search-keyword');
-    let searchedForText, searchType;
     const responseContainer = document.querySelector('#response-container');
     const dateContainer = document.querySelector('#date-container');
     const backToTop = document.querySelector('.back-to-top');
+    let searchedForText, searchType;
 
 
     form.addEventListener('submit', function(event) {
@@ -20,7 +20,7 @@
         const day = new Date().getDate()
         const date = `${year}-${month}-${day}`;
         // displaying date
-        dateContainer.innerHTML = `Today's Date : ${fullDate}`;
+        dateContainer.innerHTML = `${fullDate}`;
         dateContainer.classList.add('date')
         
         /*** WORKING ON RADIO BUTTON SELECTED (searchType) ***/
