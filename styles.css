@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background: #fafbfc;
+    background: white;
     font-family: OpenSans, sans-serif;
     margin: 0;
     padding: 0;
@@ -118,25 +118,16 @@ ul {
 
 .article {
     border: solid 1px #dbe2e8;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 20px 0 rgba(133, 123, 123, 0.1);
     margin-bottom: 2em;
     padding: 1.5em 3em;
     text-align: center;
+    /* background-color: white; */
 }
 
 
-/* .article {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: auto;
-    text-align: center;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    padding: 1.5em 3em;
-    
-} */
-
 .article:hover {
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .article h2 {
@@ -235,22 +226,21 @@ ul {
     border-color: #02b3e4
 }
 
-[type='submit']:focus {
+[type='submit']:focus:hover {
+    transition: all 0.5s;
     font-weight: bolder;
     font-size: 0.9em;
 }
 
-button:focus {
+/* button:focus {
     font-weight: bold;
-}
+} */
 
 .back-to-top {
     background-color: rgb(255, 255, 255);
     border-style: none;
     transition: all 2s;
     font-size: 40px;
-    /* width: 50px;
-    height: 50px; */
     position: fixed;
     right: 20px;
     bottom: 20px;

@@ -100,7 +100,7 @@
         
     })
 
-    window.addEventListener('scroll', () => (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) ? backToTop.classList.remove('hide') : backToTop.classList.add('hide'))
+    window.addEventListener('scroll', () => (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? backToTop.classList.remove('hide') : backToTop.classList.add('hide'))
 
     /*** BREAK DOWN OF THE ABOVE IN NORMAL FUNCTION */
     // window.addEventListener('scroll', scrollFunction);
